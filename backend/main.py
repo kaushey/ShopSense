@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from routes import imagedetect,textdetect,videodetect,user,ytvideodetect,history
+from database.dbconnect import Base, engine
+from models.user import Users
+from models.history import Historys
 
 origins = [
     "http://localhost",
@@ -19,6 +22,10 @@ middleware = [
     )
 ]
 app = FastAPI(middleware=middleware)
+
+# Create tables on startup if they don't already exist (fresh DB just works)
+Base.metadata.create_all(bind=engine)
+
 app.include_router(imagedetect.router)
 app.include_router(textdetect.router)
 app.include_router(videodetect.router)
