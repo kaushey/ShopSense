@@ -1,0 +1,16 @@
+venv
+venv/
+env
+env/
+*.pyc
+__pycache__/
+backend/env
+backend/env/
+backend/venv
+backend/venv/
+node_modules
+frontend/node_modules
+.env
+backend/.env
+backend/uploaded_images/
+frontend/build/
