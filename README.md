@@ -1,4 +1,4 @@
-﻿# AmazonAssist
+﻿# ShopSense
 
  > ## Installation
  clone this repository 
