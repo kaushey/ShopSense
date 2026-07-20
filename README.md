@@ -4,7 +4,7 @@
  clone this repository 
 
 - open in any text editor 
--  `cd amazon_assist`
+-  `cd SohopSense`
 > ## 1. Web application
 
 ### a. backend
