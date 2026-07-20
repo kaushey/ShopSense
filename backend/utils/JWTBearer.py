@@ -26,7 +26,7 @@ class JWTBearer(HTTPBearer):
 
             db = SessionLocal()
             try:
-                user = db.query(Users).filter(Users.id == int(data["id"])).first()
+                user = db.query(Users).filter(Users.id == data["id"]).first()
             finally:
                 db.close()
 
