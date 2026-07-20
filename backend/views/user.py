@@ -14,8 +14,8 @@ from database.config import JWT_SECRET,GOOGLE_CLIENT_ID
 
 def gLogin(authRequestDTO: AuthRequestDTO, db: Session):
     try:
-        if authRequestDTO.idToken == None:
-            raise "InvalidIdTokenException"
+        if authRequestDTO.idToken is None:
+          raise Exception("InvalidIdTokenException")
         request = requests.Request()
         id_info = id_token.verify_oauth2_token(
             authRequestDTO.idToken, request, GOOGLE_CLIENT_ID
@@ -33,7 +33,8 @@ def gLogin(authRequestDTO: AuthRequestDTO, db: Session):
             db.refresh(user)
         return user
     except Exception as e:
-        raise "InvalidIdTokenException"
+     print(e)
+     raise Exception("InvalidIdTokenException")
 
 
 
@@ -45,7 +46,7 @@ def createUser(authRequestDTO: AuthRequestDTO, db):
                 {
                     "email": user.email,
                     "id": str(user.id),
-                    "expiry_time": str(datetime.now() - timedelta(days=7)),
+                    "expiry_time": str(datetime.now() + timedelta(days=7)),
                 },
                 algorithm="HS256",
                 key=JWT_SECRET,

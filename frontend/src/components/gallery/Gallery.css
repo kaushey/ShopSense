@@ -26,7 +26,7 @@
     height: 300px;
     width: 250px;
     border-radius: 8px;
-    box-shadow: rgb(250, 136, 5) 0px 5px 15px;
+    box-shadow: #507ecf;
   }
 
   .image-item-info {
@@ -43,15 +43,15 @@
 
   .image-item-delete {
     background: none;
-    border: 1px solid #f3830c;
-    color: #f3830c;
+    border: 1px solid #507ecf;
+    color: #507ecf;
     border-radius: 6px;
     padding: 4px 10px;
     cursor: pointer;
   }
 
   .image-item-delete:hover {
-    background: #f3830c;
+    background: #507ecf;
     color: white;
   }
   

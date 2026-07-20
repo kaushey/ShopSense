@@ -27,9 +27,10 @@ const VideoSearch = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://127.0.0.1:8000/assist/video', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/video', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -53,7 +54,7 @@ const VideoSearch = () => {
   return (
     <div>
       <div className='header'>
-      <a href='/home'><img className='logo' src="/logo.svg" alt="logo" /></a>
+      <a href='/home'><img className='logo' src="/logo.png" alt="logo" /></a>
         <h3>Video Search</h3>
         <SearchIcon style={{ fontSize: '38px' }} />
       </div>

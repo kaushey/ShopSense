@@ -36,7 +36,7 @@ const Home = () => {
   return (
     <div>
       <div className='header'>
-        <img className='logo' src="logo.svg" alt="logo" />
+        <img className='logo' src="logo.png" alt="logo" />
       </div>
       <div className='container'>
         <div className='searchOptions'>

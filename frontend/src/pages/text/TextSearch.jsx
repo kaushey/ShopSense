@@ -24,9 +24,11 @@ const TextSearch = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://127.0.0.1:8000/assist/text', {
-        text: inputText,
-      });
+      const response = await axios.post(
+        'http://127.0.0.1:8000/text',
+        { text: inputText },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      );
       console.log('Server response:', response.data);
 
       // Assuming response.data is in the format { "Modern lamps": { "tags": "...", "image_link": "..." }, ... }
@@ -53,7 +55,7 @@ const TextSearch = () => {
   return (
     <div>
       <div className='header'>
-      <a href='/home'><img className='logo' src="/logo.svg" alt="logo" /></a>
+      <a href='/home'><img className='logo' src="/logo.png" alt="logo" /></a>
         <h3>Text Search</h3>
         <SearchIcon style={{ fontSize: '38px' }} />
       </div>

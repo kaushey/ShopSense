@@ -1,5 +1,5 @@
 .header{
-    background: #f3830c;
+    background: #507ecf;
     height: 50px;
     padding: 10px;
     width: 100%;
@@ -31,7 +31,7 @@
 .option{
     width: 280px;
     height: 250px;
-    border: 3px solid #f3830c;
+    border: 3px solid #507ecf;
     
     border-radius: 10px;
     padding: 20px;
@@ -43,13 +43,13 @@
     
 }
 .option:hover{
-    box-shadow: rgb(250, 136, 5) 0px 5px 15px;
+    box-shadow:#507ecf;
 }
 .history{
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    color: #f3830c;
+    color: #507ecf;
     font-family: "Jockey One", sans-serif;
     font-weight: 200;
     font-style: normal;
@@ -71,6 +71,6 @@
     height: 300px;
     width: 250px;
     border-radius: 8px;
-    box-shadow: rgb(250, 136, 5) 0px 5px 15px;
+    box-shadow:#507ecf;
   
 }

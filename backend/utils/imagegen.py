@@ -8,9 +8,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-from g4f.client import Client 
-from g4f.Provider.GeminiPro import GeminiPro 
-from g4f.Provider.GeminiProChat import GeminiProChat
 from database.dbconnect import get_db,Base
 from sqlalchemy.orm import Session
 from models.user import Users
@@ -20,6 +17,7 @@ import boto3
 import speech_recognition as sr
 from models.history import Historys
 from utils.s3upload import s3fileUpload
+from utils.gemini_client import extract_json
 router = APIRouter()
 load_dotenv()
 
@@ -30,9 +28,6 @@ AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-
-client = Client(provider=GeminiProChat,api_key=gemini_api_key)
-clientimage = Client(provider=GeminiPro, api_key=gemini_api_key)
 
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
 headers = {"Authorization": f"Bearer {huggingface_api_key}",
@@ -51,13 +46,9 @@ def convert_to_dict(json_data):
     return dict_data
 
 
-def extract_json(input_string):
-    try:
-        parsed_json = json.loads(input_string)
-        return parsed_json
-    except json.JSONDecodeError as e:
-        print(f"JSON decode error: {e}")
-        return None
+# extract_json now lives in utils/gemini_client.py (it also strips the
+# markdown code fences Gemini sometimes wraps JSON in) - re-exported here
+# so existing `from utils.imagegen import extract_json` imports still work.
 
 def query(payload, max_retries=10, retry_delay=30):
     retries = 0
